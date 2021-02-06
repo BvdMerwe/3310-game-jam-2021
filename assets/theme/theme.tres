@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://assets/theme/fonts/Nokia.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+
+[resource]
+default_font = ExtResource( 1 )
+Label/colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+Label/constants/line_spacing = -2
+LineEdit/colors/ = Color( 1, 0, 0, 1 )
+LineEdit/constants/ = 0
+LineEdit/constants/minimum_spaces = 0
+LineEdit/fonts/ = null
+LineEdit/fonts/font = null
+LineEdit/styles/normal = SubResource( 1 )
+Panel/colors/ = Color( 0.607843, 0.160784, 0.160784, 1 )
+PanelContainer/colors/ = Color( 0.105882, 0.921569, 0.105882, 1 )

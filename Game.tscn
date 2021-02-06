@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Screen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/theme/theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/theme/fonts/Nokia.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Lobby.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sound/C5.wav" type="AudioStream" id=8]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="World" id=3]
+
+[node name="game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 512.0
+margin_top = 299.0
+margin_right = 512.0
+margin_bottom = 300.0
+custom_fonts/font = ExtResource( 6 )
+text = "dude wtf is going
+thhis is a test
+hello??"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 212.75, 120.5 )
+scale = Vector2( 5.05357, 4.9375 )
+texture = SubResource( 1 )
+flip_v = true
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2, 0 )
+texture = ExtResource( 4 )
+vframes = 3
+hframes = 3
+frame = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_right = 500.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 6
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 84, 48 )
+size_override_stretch = true
+own_world = true
+world = SubResource( 3 )
+
+[node name="MainMenu" parent="Viewport" instance=ExtResource( 2 )]
+
+[node name="Screen" parent="Viewport" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Lobby" parent="Viewport" instance=ExtResource( 7 )]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )

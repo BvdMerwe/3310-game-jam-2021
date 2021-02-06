@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/theme/fonts/PixelFont.tres" type="BitmapFont" id=1]
+[ext_resource path="res://assets/switch.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/screen.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/textures/switch_on.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/divider.png" type="Texture" id=5]
+[ext_resource path="res://assets/Points.gd" type="Script" id=6]
+[ext_resource path="res://assets/textures/square.png" type="Texture" id=7]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/theme/theme.tres" type="Theme" id=9]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Screen" type="Control"]
+margin_right = 84.0
+margin_bottom = 48.0
+theme = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 8.0, 3.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 2.0 ]
+}
+
+[node name="BG" parent="." instance=ExtResource( 8 )]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 84.0
+margin_bottom = 48.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Switch" type="Sprite" parent="."]
+position = Vector2( 24, 28.5 )
+texture = ExtResource( 4 )
+
+[node name="Divider" type="Sprite" parent="."]
+position = Vector2( 38, 24 )
+scale = Vector2( 1, -1 )
+texture = ExtResource( 5 )
+
+[node name="Position" type="Label" parent="."]
+margin_left = 43.0
+margin_right = 84.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 1 )
+text = "100th"
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = -1
+custom_constants/margin_top = 1
+custom_constants/margin_left = 1
+custom_constants/margin_bottom = -1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 63, 27 )
+scale = Vector2( 1.01, 1 )
+texture = ExtResource( 7 )
+
+[node name="Points" type="Node2D" parent="."]
+position = Vector2( 45, 10 )
+script = ExtResource( 6 )
+
+[node name="GameProgress" type="TextureProgress" parent="."]
+margin_left = 43.0
+margin_top = 7.0
+margin_right = 84.0
+margin_bottom = 48.0
+value = 97.0
+texture_progress = ExtResource( 7 )
+fill_mode = 5
+radial_initial_angle = 315.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Winner" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+
+[node name="BG2" parent="Winner" instance=ExtResource( 8 )]
+
+[node name="Label" type="Label" parent="Winner"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "You win!
+New high score!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
