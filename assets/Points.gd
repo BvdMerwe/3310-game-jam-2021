@@ -1,7 +1,7 @@
 extends Node2D
 
 var point = preload('res://Point.tscn')
-var divisor = 5
+var divisor = 18
 
 func add_point():
 	var point_inst = point.instance()

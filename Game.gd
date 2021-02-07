@@ -1,7 +1,9 @@
 extends Control
 
-func _input(event):
+var game_start = 0
+var game_win = 0
 
+func _input(event):
 	if (event.is_action_pressed("ui_accept") || 
 		event.is_action_pressed("ui_cancel") || 
 		event.is_action_pressed("ui_up") || 
@@ -42,6 +44,7 @@ func start_game():
 	$Viewport/Screen.visible = true
 	Globals.state = Globals.GameState.PLAYING
 	$Viewport/Screen.reset_score()
+	game_start = OS.get_ticks_msec()
 	$Viewport/Screen.set_process(true)
 
 func end_game():
@@ -87,7 +90,11 @@ func lose_game(player_name, player_id):
 	
 func win_game(natural):
 	if natural:
+		#send win to server
 		Networking.win_game()
+		#calculate and send time to server for leaderboard
+		game_win = OS.get_ticks_msec()
+		Networking.win_time(game_win - game_start)
 	$Viewport/Screen/Winner/Label.text = Globals.WIN_GAME
 	$Viewport/Screen/Winner.visible = true
 	$Viewport/Screen.reset_score()

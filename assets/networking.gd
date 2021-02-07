@@ -3,8 +3,10 @@ extends Node
 # Connect all functions
 
 var SERVER_PORT = 46594
-var SERVER_IP = '192.168.0.10'
-# var SERVER_IP = '127.0.0.1'
+# var SERVER_IP = '192.168.0.10'
+var SERVER_IP = "130.61.188.46"
+# var SERVER_IP = "0.0.0.0"
+# var SERVER_IP = "127.0.0.1"
 
 export(bool) var is_server = false
 
@@ -41,6 +43,7 @@ func find_server():
 
 	#save name
 	var save_game = File.new()
+	#location - ~/.local/share/godot/ | %APPDATA%\Godot\ | ~/Library/Application Support/Godot/
 	save_game.open("user://user_info.save", File.WRITE)
 	save_game.store_line(to_json(my_info))
 	save_game.close()
@@ -130,6 +133,9 @@ remote func game_started():
 
 func update_score(score):
 	rpc_id(1, "update_score", score)
+
+func win_time(time):
+	rpc_id(1, "win_time", time)
 
 func win_game():
 	rpc_id(1, "win_game")
