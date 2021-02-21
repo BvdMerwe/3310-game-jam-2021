@@ -16,8 +16,8 @@ func _process(event):
 			$Menu2.visible = false
 			$Menu1.set_process(true)
 			$Menu2.set_process(false)
-		else :
-			get_tree().quit()
+		# else :
+		# 	get_tree().quit()
 	if Input.is_action_just_pressed("space") && Globals.state == Globals.GameState.MENU:
 		if $Menu1/Welcome.visible :
 			$Menu1/Help.visible = true

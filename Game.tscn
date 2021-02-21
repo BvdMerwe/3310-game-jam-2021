@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/theme/theme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/theme/fonts/Nokia.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Lobby.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/sound/C5.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sound/win.wav" type="AudioStream" id=8]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Viewport")

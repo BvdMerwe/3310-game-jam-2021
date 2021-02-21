@@ -4,7 +4,7 @@ var game_start = 0
 var game_win = 0
 
 func _input(event):
-	if (event.is_action_pressed("ui_accept") || 
+	if Globals.state == Globals.GameState.MENU && (event.is_action_pressed("ui_accept") || 
 		event.is_action_pressed("ui_cancel") || 
 		event.is_action_pressed("ui_up") || 
 		event.is_action_pressed("ui_down") || 
@@ -61,12 +61,12 @@ func failed_to_connect():
 	$Viewport/Lobby/AnimationPlayer.play("Loaded")
 	$Viewport/Lobby/NetworkState.text = Globals.CONNECT_FAIL
 
-func game_in_progress(time):
+func game_in_progress(time, player_count):
 	if time < 1:
 		game_ending("finding out who")
 		return
 	$Viewport/Lobby/AnimationPlayer.play("Loaded")
-	$Viewport/Lobby/NetworkState.text = "%s\nmax %ss left" % [Globals.GAME_IN_PROGRESS, str(time + 15)]
+	$Viewport/Lobby/NetworkState.text = "%s\nmax %ss left\n%s waiting" % [Globals.GAME_IN_PROGRESS, str(time + 15), player_count]
 	$Viewport/Screen/GameProgress.value = (time / 60) * 100
 
 func goto_main_menu():
@@ -79,6 +79,7 @@ func goto_main_menu():
 
 	
 func lose_game(player_name, player_id):
+	AudioManager.play_sound_once("lose")
 	if (player_id == get_tree().get_network_unique_id()):
 		win_game(false)
 		return
@@ -89,6 +90,7 @@ func lose_game(player_name, player_id):
 		$Viewport/Screen.set_process(false)
 	
 func win_game(natural):
+	AudioManager.play_sound_once("win")
 	if natural:
 		#send win to server
 		Networking.win_game()

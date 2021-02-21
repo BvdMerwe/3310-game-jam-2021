@@ -21,7 +21,6 @@ __meta__ = {
 [node name="BG" parent="." instance=ExtResource( 1 )]
 
 [node name="Menu1" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -69,6 +68,7 @@ __meta__ = {
 }
 
 [node name="Menu2" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )

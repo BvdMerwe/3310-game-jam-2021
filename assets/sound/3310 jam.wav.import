@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/3310 jam.wav-6eeee939f269377494ae2ee29dbaea87.sample"
+
+[deps]
+
+source_file="res://assets/sound/3310 jam.wav"
+dest_files=[ "res://.import/3310 jam.wav-6eeee939f269377494ae2ee29dbaea87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

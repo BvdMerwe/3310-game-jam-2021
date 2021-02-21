@@ -124,8 +124,8 @@ remote func show_time(time):
 remote func waiting_for_players():
 	Globals.get_game().game_connected()
 
-remote func game_in_progress(time):
-	Globals.get_game().game_in_progress(time)
+remote func game_in_progress(time, player_count):
+	Globals.get_game().game_in_progress(time, player_count)
 
 remote func game_started():
 	Globals.get_game().start_game()
